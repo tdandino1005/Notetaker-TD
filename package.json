@@ -1,4 +1,22 @@
 {
+  "name": "notetaker-td",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdandino1005/Notetaker-TD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tdandino1005/Notetaker-TD/issues"
+  },
+  "homepage": "https://github.com/tdandino1005/Notetaker-TD#readme",
   "dependencies": {
     "express": "^4.18.2"
   }
