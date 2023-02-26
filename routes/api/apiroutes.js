@@ -1,49 +1,40 @@
-// dependencies 
-const path = require('path');
-const fs = require('fs')
+//  Dependencies
+const apiRouter = require('express').Router();
+const { Router } = require('express');
+// const fsUtils = require('../helpers/fsUtils.js');
+// const uuid = require('../helpers/uuid');
 
-// npm package that allows for unique ids to be created
-var uniqid = require('uniqid');
+// GET route for retrieving all the notes
+apiRouter.get('/notes', (req, res) => {
+    fsUtils.readFromFile('./db/db.json')
+        .then(notes => {
+            res.json(JSON.parse(notes));
+        })
+});
 
+// POST route for saving a new note
+apiRouter.post('/notes', (req, res) => {
+    let newNote = {
+        title: req.body.title,
+        text: req.body.text,
+        id: uuid()
+    }
+    fsUtils.readAndAppend(newNote, './db/db.json')
+    const response = {
+        status: "success", body: newNote
+    }
+    res.json(response);
+});
 
-// routing
-module.exports = (app) => {
+// DELETE route for deleting a note
+apiRouter.delete('/notes/:id', (req, res) => {
+    fsUtils
+        .removeNote(req.params.id, './db/db.json')
+    const response = {
+        status: "success"
+    }
+    res.json(response);
+});
 
-  // GET /api/notes should read the db.json file and return all saved notes as JSON.
-  app.get('/api/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '../db/db.json'));
-  });
-
-  // POST /api/notes should receive a new note to save on the request body, 
-  // add it to the db.json file, and then return the new note to the client. 
-  app.post('/api/notes', (req, res) => {
-    let db = fs.readFileSync('db/db.json');
-    db = JSON.parse(db);
-    res.json(db);
-    // creating body for note
-    let userNote = {
-      title: req.body.title,
-      text: req.body.text,
-      // creating unique id for each note
-      id: uniqid(),
-    };
-    // pushing created note to be written in the db.json file
-    db.push(userNote);
-    fs.writeFileSync('db/db.json', JSON.stringify(db));
-    res.json(db);
-
-  });
-
-
-  // DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete.
-  app.delete('/api/notes/:id', (req, res) => {
-    // reading notes form db.json
-    let db = JSON.parse(fs.readFileSync('db/db.json'))
-    // removing note with id
-    let deleteNotes = db.filter(item => item.id !== req.params.id);
-    // Rewriting note to db.json
-    fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
-    res.json(deleteNotes);
-    
-  })
-};
+// Exporting
+module.exports = apiRouter;
