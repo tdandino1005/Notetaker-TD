@@ -1,8 +1,8 @@
 //  Dependencies
 const apiRouter = require('express').Router();
 const { Router } = require('express');
-// const fsUtils = require('../helpers/fsUtils.js');
-// const uuid = require('../helpers/uuid');
+const fsUtils = require('../helpers/fsUtils.js');
+const uuid = require('../helpers/uuid');
 
 // GET route for retrieving all the notes
 apiRouter.get('/notes', (req, res) => {
