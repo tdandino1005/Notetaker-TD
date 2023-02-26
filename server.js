@@ -1,25 +1,16 @@
+// Description: This file is the entry point to the application. It sets up the Express server and requires the routes.
 const express = require('express');
-const path = require('path');
-const api = require('./routes/index.js');
-
-const PORT = process.env || 3001;
-
+const apiroutes = require('./routes/apiroutes');
+const htmlroutes = require('./routes/htmlroutes');
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-
-// asks express to create a route for every file in the 'public' folder and give it a '/' route
-app.use(express.static('public'));
-// sets up express app to handel data parser, middle wear created req.body
-app.use(express.urlencoded({ extended: true }));
+// Middleware used to parse JSON and urlencoded form data
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use('/api', apiroutes);
+app.use('/', htmlroutes);
 
-
-// routes to route files
-require('./routes/apiRoutes')(app);
-require('./routes/htmlRoutes')(app);
-
-
-// app listener - starts the server
-app.listen(PORT, () => {
-  console.log(`Server available at localhost${PORT}`);
-});
+// Listener for the server
+app.listen(PORT, () => console.log(`Now ready on PORT: ${PORT}`));
