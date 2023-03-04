@@ -5,7 +5,7 @@ const htmlRoutes = require('./routes/htmlRoutes');
 const app = express();
 
 // Sets an initial port. We"ll use this later in our listener
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Middleware used to parse JSON and urlencoded form data
 app.use(express.json());
