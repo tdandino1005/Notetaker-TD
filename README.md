@@ -1,8 +1,7 @@
 # Notetaker-TD
 
 Module 11 Challenge: Express JS
-
-![Screenshot](Screenshot (1).png)
+![notetaker](https://user-images.githubusercontent.com/114967217/222928108-03196dc6-5825-42f8-b2b0-96247b853196.png)
 
 ## Live Link
 https://note-taker-td.herokuapp.com/
