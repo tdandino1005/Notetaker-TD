@@ -2,11 +2,10 @@
 
 Module 11 Challenge: Express JS
 
-![Alt text](image.png "Screenshot")
-image.png
+![Screenshot](Screenshot (1).png)
 
 ## Live Link
-https://bburns-note-taker.herokuapp.com/
+https://note-taker-td.herokuapp.com/
 
 ## Repository Link
 https://github.com/tdandino1005/Notetaker-TD
@@ -20,7 +19,7 @@ https://github.com/tdandino1005/Notetaker-TD
   * [Questions](#questions)
 
   ## Installation Instructions
-  
+
   fs, util, express, path
 
   ### Local Setup
@@ -29,6 +28,7 @@ https://github.com/tdandino1005/Notetaker-TD
 - The `package.json` file included in this Note Taker repo already lists all Node modules, NPM packages, and other dependencies that are required to successfully run this application. Please make sure to run the `npm install` command within the _terminal, while in_ the root directory to install all required modules/packages. Then run `node server.js` to start the server, and simply navigate to this url `http://localhost:3002/` within you browser's url tab.
 
   ## Questions
+  
   For any inquiries, please feel free to contact me: tdandino1005@gmail.com <br>
   To checkout my github: [tdanidno1005](https://github.com/tdandino1005)
 
